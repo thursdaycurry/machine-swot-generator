@@ -5,6 +5,10 @@ const treat = document.getElementById("treat");
 
 const so = document.getElementById("so");
 
+var audio = new Audio(
+  "trimmed-Keyboard-Button-Click-03-c-FesliyanStudios.com.mp3"
+);
+
 window.addEventListener("keydown", function () {
   const sArr = strength.value.split("\n");
   const oArr = opportunity.value.split("\n");
@@ -26,4 +30,8 @@ window.addEventListener("keydown", function () {
   });
 
   so.innerText = analysis__text;
+});
+
+window.addEventListener("keydown", function () {
+  audio.play();
 });
