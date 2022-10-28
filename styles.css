@@ -34,7 +34,7 @@ html {
     padding: 10rem 10rem;
 }
 
-.swot__paper {
+.swot__matrix {
     display: grid;
     grid-template-columns: repeat(2, minmax(30rem, 40rem));
     grid-gap: 2rem;
@@ -51,4 +51,18 @@ label {
 textarea {
     width: 100%;
     height: 20rem;
+}
+
+.analysis {
+    border: 1px solid black;
+    padding: 2rem;
+    width: max-content;
+    height: min-content;
+    margin: 2rem 0;
+    font-size: 1.5rem;
+}
+
+.analysis__target {
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
 }
