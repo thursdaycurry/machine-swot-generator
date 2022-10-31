@@ -18,3 +18,5 @@ SWOT Generator by TC stands for ‘Strength, Weakness, Opportunity, Treats Gener
 1. User story: can see both in English / Korean
    1. feature: Add language-converting button component with UI like 'Eng/Kor'
    2. feature: Add JS language switch code and render different languages
+
+

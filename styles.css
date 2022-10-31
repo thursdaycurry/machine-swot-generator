@@ -51,12 +51,20 @@ html {
     grid-template-rows: minmax(100vh, auto);
 }
 
+/* ! Sidebar */
+
 .sidebar {
     border-right: 1px solid grey;
     grid-column: 1 / 2;
     grid-row: 1 / -1;
 }
 
+.contact-kakao {
+    background-color: red;
+}
+
+
+/* ! Header */
 .header {
     padding: 5rem 7.5rem;
     margin: 0 auto;
