@@ -3,6 +3,27 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+:root {
+    --color-primary: #196D60;
+    --color-primary-light: #FFCD4A;
+    --color-primary-dark: #FF4924;
+  
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+
+    --color-ivory-light-1: #F3F0EB;
+  
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+  
+    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
+    --shadow-light: 0 0 2rem 0rem rgba(142, 142, 142,0.3); 
 }
 
 html {
@@ -12,6 +33,12 @@ html {
 
 .heading-1 {
     font-size: 3rem;
+}
+
+.heading-2 {
+    font-size: 2.2rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .heading-3 {
@@ -31,7 +58,8 @@ html {
 }
 
 .header {
-    padding: 10rem 10rem;
+    padding: 5rem 7.5rem;
+    margin: 0 auto;
 }
 
 .swot__matrix {
@@ -41,16 +69,20 @@ html {
 }
 
 .label__box {
-    background-color: salmon;
+    
     text-align: center;
 }
 
 label {
     font-size: 1.5rem;
 }
+
 textarea {
     width: 100%;
     height: 20rem;
+    border: none;
+    background-color: var(--color-grey-light-3);
+    padding: 1rem;
 }
 
 .analysis {
