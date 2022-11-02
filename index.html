@@ -9,6 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-28ZMYGL1J9');
     </script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +22,14 @@
 <body class="container">
 
     <div class="sidebar">
-        <a class="contact-kakao" href="https://open.kakao.com/o/shd9i4Ke">Contact</a>
+        <div class="sidebar__menu">
+            <a class="contact-kakao" href="https://open.kakao.com/o/shd9i4Ke" target="_blank">Contact</a>
+        </div>
+        <div class="sidebar__menu">
+            <div class="sound">Sound</div>
+        </div>
+        
+
     </div>
 
     <header class="header">
@@ -31,60 +39,71 @@
 
         <h2 class="heading-2">SWOT 매트릭스</h2>
         <div class="swot__matrix">
+
+            <div class="swot__axis-internal">
+                내부 요인(통제 가능)
+            </div>
+
+            <div class="swot__axis-external">
+                외부 요인(통제 불가)
+            </div>
+
             <div class="swot__container swot__container-s">
                 <div class="label__box">
                     <label for="strength" class="swot__label">강점</label>
                 </div>
-                <textarea id="strength" name="strength" placeholder="write some strength.."></textarea>
+                <textarea id="strength" name="strength" placeholder="한줄에 하나씩 입력하기"></textarea>
             </div>
 
             <div class="swot__container swot__container-o">
                 <div class="label__box">
                     <label for="opportunity" class="swot__label">기회</label>
                 </div>
-                <textarea id="opportunity" name="opportunity" placeholder="write some opportunity.."></textarea>
+                <textarea id="opportunity" name="opportunity" placeholder="한줄에 하나씩 입력하기"></textarea>
             </div>
 
             <div class="swot__container swot__container-w">
                 <div class="label__box">
                     <label for="weakness" class="swot__label">약점</label>
                 </div>
-                <textarea id="weakness" name="weakness" placeholder="write some weakness.."></textarea>
+                <textarea id="weakness" name="weakness" placeholder="한줄에 하나씩 입력하기"></textarea>
             </div>
 
             <div class="swot__container swot__container-t">
                 <div class="label__box">
                     <label for="treats" class="swot__label">위협</label>
                 </div>
-                <textarea id="treats" name="treats" placeholder="write some treats.."></textarea>
+                <textarea id="treats" name="treats" placeholder="한줄에 하나씩 입력하기"></textarea>
             </div>
         </div>
 
         <h2 class="heading-2">SWOT 분석</h2>
         <div class="swot__analysis">
+            
             <!-- Strength x Opportunity -->
-            <div class="analysis">
-                <div class="analysis__target">SO(강점 x 기회)</div>
+            <div class="analysis anal__so">
+                <div class="analysis__target">SO(강점 x 기회) : 기회의 이점을 얻기 위해 강점을 활용하는 방법은?</div>
                 <div id="so" class="analysis__draft">dd</div>
             </div>
 
             <!-- Strength x Treats -->
             <div class="analysis">
-                <div class="analysis__target">ST(강점 x 위협)</div>
+                <div class="analysis__target">ST(강점 x 위협) : 위협을 피하기 위해 강점을 어떻게 활용하는 방법은? </div>
                 <div id="st" class="analysis__draft"></div>
             </div>
 
             <!-- Weakness x Opportunity -->
             <div class="analysis">
-                <div class="analysis__target">WO(약점 x 기회)</div>
+                <div class="analysis__target">WO(약점 x 기회) : 약점을 극복하면서 기회를 살릴 수 있는 방법은?</div>
                 <div id="wo" class="analysis__draft"></div>
             </div>
 
             <!-- Weakness x Treats -->
             <div class="analysis">
-                <div class="analysis__target">WT(약점 x 위협)</div>
+                <div class="analysis__target">WT(약점 x 위협) : 약점은 최소화하고 위협을 피하는 전략은?</div>
                 <div id="wt" class="analysis__draft"></div>
             </div>
+
         </div>
 
     </heaer>
