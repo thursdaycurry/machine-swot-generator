@@ -5,6 +5,8 @@ const treat = document.getElementById("treat");
 
 const so = document.getElementById("so");
 
+console.log('hello')
+
 var audio = new Audio(
   "trimmed-Keyboard-Button-Click-03-c-FesliyanStudios.com.mp3"
 );
