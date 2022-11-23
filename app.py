@@ -10,7 +10,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://thursdaycurryboy:thursdaylove@cluster0.5hnlvb6.mongodb.net/?retryWrites=true&w=majority'.format(id=MONGODB_ID, pw=MONGODB_PW))
+client = MongoClient('mongodb+srv://{id}:{pw}@cluster0.5hnlvb6.mongodb.net/?retryWrites=true&w=majority'.format(id=MONGODB_ID, pw=MONGODB_PW))
 db = client.dbsparta
 
 print(list(db.fanlog.find({}, {'_id':False})))
