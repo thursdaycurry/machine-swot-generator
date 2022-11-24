@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        
+        function tryRegister() {        
+    
+            const id = $('#id').val()
+            const pw = $('#pw').val()
+
+            // Both id and pw is typed?
+            if(!(id && pw)) {
+                alert('아이디 또는 패스워드를 넣어주세요')
+            } else {
+                // check if both id and pw is proper
+                isRegistered(id, pw);
+            }
+        }
+        
+        function createAccount(id, pw) {
+            console.log(id)
+            console.log(pw)
+            $.ajax({
+                type: "POST",
+                url: "/register",
+                data: {
+                    id_give: id,
+                    pw_give: pw
+                },
+                success: function(response) {
+                    alert(response['msg'])
+                }
+            })
+            
+        }
+
+        function isRegistered(input_id, input_pw) {
+            $.ajax({
+                type: "POST",
+                url: "/isRegistered",
+                data: {
+                    id_give: input_id,
+                    pw_give: input_pw
+                },
+                success: function(response) {
+                    if(response['available']) {
+                        // set up new id, pw to mongo
+                        // login
+                        alert(response['msg'])
+                        createAccount(input_id, input_pw)
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            })
+        }
+
+        function goBack() {
+            $.ajax({
+                type: "GET",
+                url: "/",
+                data: {},
+                success: function(response) {
+                    alert(response['msg'])
+                }  
+            })
+        }
+
+    </script>
+</head>
+<body>
+<form>
+    <label for="id">id</label>
+    <input type="text" id="id" name="id" placeholder="아이디"></br>
+    <label for="pw">pw</label>
+    <input type="text" id="pw" name="pw" placeholder="비밀번호"></br>
+    <button onclick="tryRegister()" type="button" id="form_register">회원가입</button>
+</form>
+
+    <button onclick="goBack()">이전으로</button>
+</body>
+
+</html>
