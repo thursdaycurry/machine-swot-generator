@@ -1,10 +1,12 @@
 # For Private Key
 import datetime
+
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
 MONGODB_ID = os.environ.get("MONGODB_ID")
 MONGODB_PW = os.environ.get("MONGODB_PW")
 
@@ -22,10 +24,11 @@ def login():
 
 @app.route('/login', methods=["POST"])
 def login_post():
+
     key_receive = request.form['key_give']
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
-    login_time = datetime.datetime.now()
+    time_now = datetime.datetime.now()
 
     # find id from DB
     searchedAccount = db.swot_account.find_one(
@@ -41,19 +44,27 @@ def login_post():
     # 2. Break: Check if pw in DB matches PW received
     if searchedAccount['pw'] != pw_receive:
         return jsonify({
-            'msg': '마 비번 틀리다'
+            'msg': '마 비번 틀리다',
+            'available': 0
         })
 
-    # Pass: Login allowed
+    loginHistory = searchedAccount['loginHistory']
+    loginHistory.append(time_now)
 
-    doc = {
-        'time': login_time,
-        'key': key_receive
-    }
+    keyLog = searchedAccount['key']
+    keyLog.append(key_receive)
 
-    # db.swot.insert_one(doc)
-    print(key_receive, id_receive, pw_receive)
-    return jsonify({'msg': '로그인 완료'})
+    db.swot_account.update_one(
+        {'id': id_receive}, {
+            '$set': {
+                'key': keyLog,
+                'loginHistory': loginHistory
+            }
+        })
+    return jsonify({
+        'msg': '로그인 완료',
+        'available': 1
+    })
 
 
 @app.route('/register', methods=["GET"])
@@ -70,8 +81,8 @@ def register_post():
     pw_receive = request.form['pw_give']
 
     doc = {
-        'time_registered': time_now,
-        'login_timeCounter': {'1': time_now},
+        'registeredAt': time_now,
+        'loginHistory': [time_now],
         'key': [],
         'id': id_receive,
         'pw': pw_receive
@@ -80,6 +91,7 @@ def register_post():
 
     return jsonify({
         'msg': '회원이 되신걸 축하드립니다👻 ',
+        'available': 1
     })
 
 

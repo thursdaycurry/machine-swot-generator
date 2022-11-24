@@ -6,30 +6,15 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        /* function save_key() {
-            // get key value from input
-            const key = $('#login-key').val();
-
-            $.ajax({
-                type: "POST",
-                url: "/login",
-                data: {key_give: key},
-                success: function (response) {
-                    alert(response['msg'])
-                    console.log("wow")
-                    window.location.href = "/home";
-                }
-            })
-        } */
-
+        
         function login() {
             const key = $('#key').val();
             const id = $('#id').val();
             const pw = $('#pw').val();
 
             // Break: Check if Both id and pw is typed?
-            if(!(id && pw)) {
-                alert('아이디 또는 패스워드를 넣어주세요')
+            if(!(key && id && pw)) {
+                return alert('음식이나 ID, PW 중 무언가가 빠져있습니다 🥱')
             }
             $.ajax({
                 type: "POST",
@@ -40,11 +25,16 @@
                     pw_give: pw
                 },
                 success: function(response) {
-                    alert(response['msg'])
+                    
+                    if (Number(response['available'])) {
+                        alert(`성공: ${response['msg']}`)
+                        window.location.href = "/home"
+                    } else {
+                        alert(`실패: ${response['msg']}`)
+                    }
                 }
             })
         }
-
 
         function register() {
             $.ajax({
@@ -54,7 +44,6 @@
                 success: function(response) {
                     window.location.href = "/register";
                 }
-
             })
         }
 
