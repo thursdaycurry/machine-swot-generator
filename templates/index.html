@@ -1,28 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-28ZMYGL1J9"></script>
-
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWOT Generator</title>
     <link rel="stylesheet" href="../static/styles.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap"
+        rel="stylesheet">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
 
 </head>
 <script>
 
-
     function btnMix() {
+        
+        // Show Goal
         const inputGoal = document.getElementById('textSmartGoal').value;
         document.getElementById('displayGoal').textContent = inputGoal;
+
+        // SWOT input
+        const inputStrength = document.getElementById('strength').value;
+        const inputWeakness = document.getElementById('weakness').value;
+        const inputOpportunity = document.getElementById('opportunity').value;
+        const inputThreat = document.getElementById('threat').value;
         
+        // SWOT array
+        const arrayStrength = inputStrength.split('\n');
+        const arrayWeakness = inputWeakness.split('\n');
+        const arrayOpportunity = inputOpportunity.split('\n');
+        const arrayThreat = inputThreat.split('\n');
+
+        const mixedSO = document.querySelector('.mixed--so');
+        const mixedST = document.querySelector('.mixed--st');
+        const mixedWO = document.querySelector('.mixed--wo');
+        const mixedWT = document.querySelector('.mixed--wt');
+        mixedSO.innerHTML = ''; // reset
+        mixedST.innerHTML = ''; // reset
+        mixedWO.innerHTML = ''; // reset
+        mixedWT.innerHTML = ''; // reset
+
+        // SO
+        for (let i = 0; i < arrayStrength.length; i++) {
+            for (let j = 0; j < arrayOpportunity.length; j++) {
+                const temp_text = `
+                <div class="container__insight">
+                    <input class="insight--checkbox" type="checkbox">
+                    <div>
+                        <div>${arrayStrength[i]} x ${arrayOpportunity[j]}</div>
+                        <textarea></textarea>
+                    </div>
+                </div>
+                `;
+                mixedSO.insertAdjacentHTML('beforeend', temp_text)
+            }
+        }
         
+        // ST
+        for (let i = 0; i < arrayStrength.length; i++) {
+            for (let j = 0; j < arrayThreat.length; j++) {
+                const temp_text = `
+                <div class="container__insight">
+                    <input class="insight--checkbox" type="checkbox">
+                    <div>
+                        <div>${arrayStrength[i]} x ${arrayThreat[j]}</div>
+                        <textarea></textarea>
+                    </div>
+                </div>
+                `;                
+                mixedST.insertAdjacentHTML('beforeend', temp_text)
+            }
+        }
+
+        // WO
+        for (let i = 0; i < arrayWeakness.length; i++) {
+            for (let j = 0; j < arrayOpportunity.length; j++) {
+                const temp_text = `
+                <div class="container__insight">
+                    <input class="insight--checkbox" type="checkbox">
+                    <div>
+                        <div>${arrayWeakness[i]} x ${arrayOpportunity[j]}</div>
+                        <textarea></textarea>
+                    </div>
+                </div>
+                `;                
+                mixedWO.insertAdjacentHTML('beforeend', temp_text)
+            }
+        }
+
+        // WT
+        for (let i = 0; i < arrayWeakness.length; i++) {
+            for (let j = 0; j < arrayThreat.length; j++) {
+                const temp_text = `
+                <div class="container__insight">
+                    <input class="insight--checkbox" type="checkbox">
+                    <div>
+                        <div>${arrayWeakness[i]} x ${arrayThreat[j]}</div>
+                        <textarea></textarea>
+                    </div>
+                </div>
+                `;                
+                mixedWT.insertAdjacentHTML('beforeend', temp_text)
+            }
+        }
+        
+
+
     }
 </script>
 
@@ -34,41 +123,38 @@
         </div>
     </div>
 
-    <header class="header">
-
-        <h1 class="heading-1">SWOT 생성기(SWOT Generator)</h1>
+    <header>
+        <h1 class="heading-1">SWOT Generator</h1>
         <p>I made this for self-assessment. Please enjoy it all</p>
 
         <h2 class="heading-2">1. 목표 설정</h2>
         <div class="smart">
-            <div>
-                <input type="checkbox" name="input-smart">
-                <label for="input-smart">목표의 구체성(Specific)</label>
+            <div class="container__smart">
+                <input class="inputSmart" type="checkbox" name="input--smart">
+                <label for="input--smart">Specific: 구체적인가?</label>
             </div>
-            <div>
-                <input type="checkbox" name="input-smart">
-                <label for="input-smart">측정 가능성(Measuarable)</label>
+            <div class="container__smart">
+                <input class="inputSmart" type="checkbox" name="input--smart">
+                <label for="input--smart">Measuarable:측정 가능한가?</label>
             </div>
-            <div>
-                <input type="checkbox" name="input-smart">
-                <label for="input-smart">달성 가능성(Achievable)</label>
+            <div class="container__smart">
+                <input class="inputSmart" type="checkbox" name="input--smart">
+                <label for="input--smart">Achievable: 달성할 수 있는 능력이 있는가</label>
             </div>
-            <div>
-                <input type="checkbox" name="input-smart">
-                <label for="input-smart">실현 가능성(Realistic)</label>
+            <div class="container__smart">
+                <input class="inputSmart" type="checkbox" name="input--smart">
+                <label for="input--smart">Realistic: 현실적인가</label>
             </div>
-            <div>
-                <input type="checkbox" name="input-smart">
-                <label for="input-smart">기한이 있는(Time-bound)</label>
+            <div class="container__smart">
+                <input class="inputSmart" type="checkbox" name="input--smart">
+                <label for="input--smart">Time-bound: 마감 기한이 있는가</label>
             </div>
-            <div>
-                
-            <textarea id="textSmartGoal" placeholder="2023년 _월까지 __기업에서 __개발자로 커리어를 시작한다. 이를 달성하기 위해 JS와 React의 __부분까지 익히고 포트폴리오는 _수준까지 구현한 작품을 5개 이상 만들겠다">
-            나는 2023년 4월까지 미래의 성장 가능성이 있는 분야에서 프론트엔드 개발자가 된다.
-            </textarea>
+            <div class="container__smart">
+
+                <textarea id="textSmartGoal">나는 2023년 4월까지 미래의 성장 가능성이 있는 분야에서 프론트엔드 개발자가 된다.</textarea>
 
             </div>
-            
+
         </div>
 
         <h2 class="heading-2">2. SWOT 매트릭스</h2>
@@ -86,70 +172,74 @@
                 <div class="label__box">
                     <label for="strength" class="swot__label">강점</label>
                 </div>
-                <textarea id="strength" name="strength" placeholder="한줄에 하나씩 입력하기">
-                    Resourceful하다,
-                    생산적인 협업을 추구한다,
-                    미래지향적이다
-                </textarea>
+                <textarea id="strength" name="strength"
+                    placeholder="한줄에 하나씩 입력하기">Resourceful하다&#10;생산적인 협업을 추구한다&#10;미래지향적이다</textarea>
             </div>
 
             <div class="swot__container swot__container-o">
                 <div class="label__box">
                     <label for="opportunity" class="swot__label">기회</label>
                 </div>
-                <textarea id="opportunity" name="opportunity" placeholder="한줄에 하나씩 입력하기">
-                    
-                </textarea>
+                <textarea id="opportunity" name="opportunity" placeholder="한줄에 하나씩 입력하기">컴퓨터 기술의 확대&#10;디자인의 중요성에 대한 증가</textarea>
             </div>
 
             <div class="swot__container swot__container-w">
                 <div class="label__box">
                     <label for="weakness" class="swot__label">약점</label>
                 </div>
-                <textarea id="weakness" name="weakness" placeholder="한줄에 하나씩 입력하기"></textarea>
+                <textarea id="weakness" name="weakness" placeholder="한줄에 하나씩 입력하기">반복적인 일에 쉽게 질린다&#10;소극적이고 폐쇄적인 문화에 취약&#10;사람들에게 쉽게 영향받는다</textarea>
             </div>
 
             <div class="swot__container swot__container-t">
                 <div class="label__box">
-                    <label for="treats" class="swot__label">위협</label>
+                    <label for="threat" class="swot__label">위협</label>
                 </div>
-                <textarea id="treats" name="treats" placeholder="한줄에 하나씩 입력하기"></textarea>
+                <textarea id="threat" name="threat" placeholder="한줄에 하나씩 입력하기">경제성장의 둔화&#10;네셔널리즘 확산</textarea>
             </div>
-            
+
         </div>
-        <button onclick="btnMix()">믹싱하기</button>
+        <button class="btn btn--mix" onclick="btnMix()">믹싱하기</button>
+
 
         <h2 class="heading-2">3. SWOT 믹스</h2>
         <div class="swot__analysis">
-            
-            <div class="analysis anal__goal" id="displayGoal">hello</div>
+
+            <div class="mixed mixed__goal" id="displayGoal">hello</div>
 
             <!-- Strength x Opportunity -->
-            <div class="analysis anal__so">
-                <div class="analysis__target">SO(강점 x 기회) : 기회의 이점을 얻기 위해 강점을 활용하는 방법은?</div>
-                <div id="so" class="analysis__draft"></div>
+            <div class="mixed">
+                <div class="mixed__target">SO(강점 x 기회) : 기회의 이점을 얻기 위해 강점을 활용하는 방법은?</div>
+                <div class="mixed--so">
+
+                </div>
             </div>
 
-            <!-- Strength x Treats -->
-            <div class="analysis">
-                <div class="analysis__target">ST(강점 x 위협) : 위협을 피하기 위해 강점을 어떻게 활용하는 방법은? </div>
-                <div id="st" class="analysis__draft"></div>
+            <!-- Strength x threat -->
+            <div class="mixed">
+                <div class="mixed__target">ST(강점 x 위협) : 위협을 피하기 위해 강점을 어떻게 활용하는 방법은? </div>
+                <div class="mixed--st">
+
+                </div>
             </div>
 
             <!-- Weakness x Opportunity -->
-            <div class="analysis">
-                <div class="analysis__target">WO(약점 x 기회) : 약점을 극복하면서 기회를 살릴 수 있는 방법은?</div>
-                <div id="wo" class="analysis__draft"></div>
+            <div class="mixed">
+                <div class="mixed__target">WO(약점 x 기회) : 약점을 극복하면서 기회를 살릴 수 있는 방법은?</div>
+                <div class="mixed--wo">
+
+                </div>
             </div>
 
-            <!-- Weakness x Treats -->
-            <div class="analysis">
-                <div class="analysis__target">WT(약점 x 위협) : 약점은 최소화하고 위협을 피하는 전략은?</div>
-                <div id="wt" class="analysis__draft"></div>
+            <!-- Weakness x threat -->
+            <div class="mixed">
+                <div class="mixed__target">WT(약점 x 위협) : 약점은 최소화하고 위협을 피하는 전략은?</div>
+                <div class="mixed--wt">
+
+                </div>
             </div>
 
         </div>
-        <button id="swot-post">제출</button>
+        <button class="btn btn--form">제출</button>
     </header>
 
 </body>
