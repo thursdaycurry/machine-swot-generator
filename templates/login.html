@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello</title>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>SWOT Generator</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap" rel="stylesheet">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         
@@ -50,21 +55,25 @@
     </script>
 </head>
 
+<body class="page-login">
+    <div class="login-form">
+        <form>
+            <label for="name">당신이 좋아하는 음식은?</label>
+            <input type="text" id="key" name="name" placeholder="음식">
+            <br>
+            <label for="id">아이디</label>
+            <input type="text" id="id" name="id" placeholder="아이디">
+            <br>
+            <label for="pw">비밀번호</label>
+            <input type="text" id="pw" name="pw" placeholder="비밀번호">
+            <br>
+            <button onclick="login()" type="button">로그인</button>
+        </form>
 
-<body>
-<form>
-    <label for="name">웹사이트 주인이 가장 좋아하는 음식은?</label>
-    <input type="text" id="key" name="name" placeholder="음식">
-    <br>
-    <label for="id">아이디</label>
-    <input type="text" id="id" name="id" placeholder="아이디">
-    <br>
-    <label for="pw">비밀번호</label>
-    <input type="text" id="pw" name="pw" placeholder="비밀번호">
-    <br>
-    <button onclick="login()" type="button">로그인</button>
-</form>
+        <br>
 
-<button onclick="register()" type="button">회원가입</button>
+        <button onclick="register()" type="button">회원가입</button>
+    </div>
+
 </body>
 </html>

@@ -122,21 +122,3 @@ def isRegistered():
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
-
-    # # 1. Break: Check if ID doesn't exist in DB
-    # if searchedAccount is None:
-    #     return jsonify({
-    #         'msg': "아이디가 없노",
-    #         'available': '0'
-    #     })
-
-    # # 2. Break: Check if pw in DB matches PW received
-    # if searchedAccount['pw'] != pw_receive:
-    #     return jsonify({
-    #         'msg': '마 비번 틀리다'
-    #     })
-
-    # # Pass: If there is no problem
-    # return jsonify({
-    #     'msg': '성공적으로 가져왔다'
-    # })

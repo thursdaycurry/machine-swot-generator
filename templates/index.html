@@ -11,13 +11,20 @@
     <link rel="stylesheet" href="../static/styles.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
-    <script>
-
-    </script>
 
 </head>
+<script>
+
+
+    function btnMix() {
+        const inputGoal = document.getElementById('textSmartGoal').value;
+        document.getElementById('displayGoal').textContent = inputGoal;
+        
+        
+    }
+</script>
 
 <body class="container">
 
@@ -25,11 +32,6 @@
         <div class="sidebar__menu">
             <a class="contact-kakao" href="https://open.kakao.com/o/shd9i4Ke" target="_blank">Contact</a>
         </div>
-        <div class="sidebar__menu">
-            <div class="sound">Sound</div>
-        </div>
-        
-
     </div>
 
     <header class="header">
@@ -37,7 +39,39 @@
         <h1 class="heading-1">SWOT 생성기(SWOT Generator)</h1>
         <p>I made this for self-assessment. Please enjoy it all</p>
 
-        <h2 class="heading-2">SWOT 매트릭스</h2>
+        <h2 class="heading-2">1. 목표 설정</h2>
+        <div class="smart">
+            <div>
+                <input type="checkbox" name="input-smart">
+                <label for="input-smart">목표의 구체성(Specific)</label>
+            </div>
+            <div>
+                <input type="checkbox" name="input-smart">
+                <label for="input-smart">측정 가능성(Measuarable)</label>
+            </div>
+            <div>
+                <input type="checkbox" name="input-smart">
+                <label for="input-smart">달성 가능성(Achievable)</label>
+            </div>
+            <div>
+                <input type="checkbox" name="input-smart">
+                <label for="input-smart">실현 가능성(Realistic)</label>
+            </div>
+            <div>
+                <input type="checkbox" name="input-smart">
+                <label for="input-smart">기한이 있는(Time-bound)</label>
+            </div>
+            <div>
+                
+            <textarea id="textSmartGoal" placeholder="2023년 _월까지 __기업에서 __개발자로 커리어를 시작한다. 이를 달성하기 위해 JS와 React의 __부분까지 익히고 포트폴리오는 _수준까지 구현한 작품을 5개 이상 만들겠다">
+            나는 2023년 4월까지 미래의 성장 가능성이 있는 분야에서 프론트엔드 개발자가 된다.
+            </textarea>
+
+            </div>
+            
+        </div>
+
+        <h2 class="heading-2">2. SWOT 매트릭스</h2>
         <div class="swot__matrix">
 
             <div class="swot__axis-internal">
@@ -52,14 +86,20 @@
                 <div class="label__box">
                     <label for="strength" class="swot__label">강점</label>
                 </div>
-                <textarea id="strength" name="strength" placeholder="한줄에 하나씩 입력하기"></textarea>
+                <textarea id="strength" name="strength" placeholder="한줄에 하나씩 입력하기">
+                    Resourceful하다,
+                    생산적인 협업을 추구한다,
+                    미래지향적이다
+                </textarea>
             </div>
 
             <div class="swot__container swot__container-o">
                 <div class="label__box">
                     <label for="opportunity" class="swot__label">기회</label>
                 </div>
-                <textarea id="opportunity" name="opportunity" placeholder="한줄에 하나씩 입력하기"></textarea>
+                <textarea id="opportunity" name="opportunity" placeholder="한줄에 하나씩 입력하기">
+                    
+                </textarea>
             </div>
 
             <div class="swot__container swot__container-w">
@@ -75,15 +115,19 @@
                 </div>
                 <textarea id="treats" name="treats" placeholder="한줄에 하나씩 입력하기"></textarea>
             </div>
+            
         </div>
+        <button onclick="btnMix()">믹싱하기</button>
 
-        <h2 class="heading-2">SWOT 믹스</h2>
+        <h2 class="heading-2">3. SWOT 믹스</h2>
         <div class="swot__analysis">
             
+            <div class="analysis anal__goal" id="displayGoal">hello</div>
+
             <!-- Strength x Opportunity -->
             <div class="analysis anal__so">
                 <div class="analysis__target">SO(강점 x 기회) : 기회의 이점을 얻기 위해 강점을 활용하는 방법은?</div>
-                <div id="so" class="analysis__draft">dd</div>
+                <div id="so" class="analysis__draft"></div>
             </div>
 
             <!-- Strength x Treats -->
@@ -109,6 +153,7 @@
     </header>
 
 </body>
+
 
 
 </html>
